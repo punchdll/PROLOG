@@ -171,10 +171,26 @@ Dominio del discurso: Perros, Cartero
 
 * Hay un perro que muerde a todos los perros que muerden a algún cartero
 
-Variables de Individuo: x, y
+Variables de Individuo: x, y, z
 
 Cuantificadores: Universal(∀), Existencial(∃)
 
 Propiedades: muerde, perro, cartero
 
-Relaciones (Predicados N-arios): ∃x(perro(x) ^ 
+Relaciones (Predicados N-arios): ∃x(perro(x) ^ ∀y(perros(y) ^ ∃z(cartero(z) ^ muerde(y, z)) ⟶ muerde(x, y)))
+
+Dominio del discurso: Perros, Cartero
+
+***
+
+* Hay un solo perro que se muerde a sí mismo
+
+Variables de Individuo: x
+
+Propiedades: muerde, perro
+
+Relaciones (Predicados N-arios): ∃!x(perro(x) ^ muerde(x, x))
+
+Dominio del discurso: Perros
+
+***
