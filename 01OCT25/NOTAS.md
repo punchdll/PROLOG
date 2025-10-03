@@ -27,3 +27,7 @@
 >Negación del cuantificador existencial (E al reves con una linea cruzandolo) indica que no existe ningun elemento que cumpla la propiedad.
 
 * **Dominio del discurso**: Todos los elementos con los que podemos realizar proposiciones.
+
+* **⟶**: Significa entonces o la consecuencia de lo anterior
+
+* **^**: Indica que ambas cosas deben ser verdaderas
