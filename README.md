@@ -1,52 +1,65 @@
 ```bash
-[4.0K]  .
-├── [4.0K]  01SEP2025
-│   ├── [4.0K]  PARENTESIS
-│   │   ├── [4.0K]  bin
-│   │   ├── [ 324]  Makefile
-│   │   ├── [4.0K]  obj
-│   │   └── [4.0K]  src
-│   │       ├── [ 797]  main.cxx
-│   │       ├── [ 752]  validador.cxx
-│   │       └── [ 252]  validador.h
-│   └── [4.0K]  SUMAS
-│       └── [ 720]  sumas.cxx
-├── [4.0K]  03SEP25
-│   ├── [ 192]  EJERCICIOS.lsp
-│   └── [ 492]  Notas.md
-├── [4.0K]  04SEP25
-│   ├── [ 578]  EJERCICIOS.lsp
-│   └── [ 272]  NOTAS.md
-├── [4.0K]  08SEP25
-│   ├── [ 530]  FUNCIONES_BASICAS.lsp
-│   └── [1.8K]  NOTAS.md
-├── [4.0K]  10SEP25
-│   ├── [ 515]  LISTAS.lsp
-│   └── [ 859]  NOTAS.md
-├── [4.0K]  11SEP25
-│   ├── [1.5K]  CONDICIONALES.md
-│   └── [ 298]  FUNCIONES.lsp
-├── [4.0K]  12SEP25
-│   ├── [1.0K]  EJERCICIOS.lsp
-│   └── [3.8K]  NOTAS.md
-├── [4.0K]  17SEP25
-│   └── [4.0K]  ACERTIJOS.md
-├── [4.0K]  18SEP25
-│   └── [ 211]  ACERTIJO_GCPM.md
-├── [4.0K]  19SEP25
-│   ├── [1.2K]  codigo.lsp
-│   └── [1006]  NOTAS.md
-├── [4.0K]  22SEP25
-│   ├── [1.1K]  arbolfamiliar.lsp
-│   └── [2.1K]  codigo.lsp
-├── [4.0K]  29SEP25
-│   └── [3.9K]  FIGURAS.md
-├── [4.0K]  EJERCICIOS_EXAMEN
-│   └── [4.6K]  EXAMEN.md
-├── [4.0K]  EJERCICIOS_LISP_PREEXAMEN
-│   ├── [2.5K]  1_PROBLEMAS_CON_CAR_Y_CDR.md
-│   └── [4.1K]  2_EJERCICIOS_DE_LISP_(USO_RESTRINGIDO_DE_FUNCIONES).md
-└── [4.0K]  TEORICO
-    ├── [1.8M]  EJERCICIOS_NOTACION_POLACA.pdf
-    └── [6.0K]  FUNCIONES_INCLUIDAS.md
+.
+├── 01OCT25
+│   ├── NOTAS.md
+│   └── ORACIONES.md
+├── 01SEP2025
+│   ├── PARENTESIS
+│   │   ├── bin
+│   │   ├── Makefile
+│   │   ├── obj
+│   │   └── src
+│   │       ├── main.cxx
+│   │       ├── validador.cxx
+│   │       └── validador.h
+│   └── SUMAS
+│       └── sumas.cxx
+├── 03SEP25
+│   ├── EJERCICIOS.lsp
+│   └── Notas.md
+├── 04SEP25
+│   ├── EJERCICIOS.lsp
+│   └── NOTAS.md
+├── 08OCT25
+│   ├── familia.pl
+│   └── notas.md
+├── 08SEP25
+│   ├── FUNCIONES_BASICAS.lsp
+│   └── NOTAS.md
+├── 10SEP25
+│   ├── LISTAS.lsp
+│   └── NOTAS.md
+├── 11SEP25
+│   ├── CONDICIONALES.md
+│   └── FUNCIONES.lsp
+├── 12SEP25
+│   ├── EJERCICIOS.lsp
+│   └── NOTAS.md
+├── 13OCT25
+│   └── biblioteca.pl
+├── 15OCT25
+│   └── fibo.pl
+├── 17SEP25
+│   └── ACERTIJOS.md
+├── 18SEP25
+│   └── ACERTIJO_GCPM.md
+├── 19SEP25
+│   ├── codigo.lsp
+│   └── NOTAS.md
+├── 22SEP25
+│   ├── arbolfamiliar.lsp
+│   └── codigo.lsp
+├── 29SEP25
+│   └── FIGURAS.md
+├── EJERCICIOS_EXAMEN
+│   └── EXAMEN.md
+├── EJERCICIOS_LISP_PREEXAMEN
+│   ├── 1_PROBLEMAS_CON_CAR_Y_CDR.md
+│   └── 2_EJERCICIOS_DE_LISP_(USO_RESTRINGIDO_DE_FUNCIONES).md
+├── README.md
+└── TEORICO
+    ├── EJERCICIOS_NOTACION_POLACA.pdf
+    └── FUNCIONES_INCLUIDAS.md
+
+25 directories, 36 files
 ```
