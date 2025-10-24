@@ -1,3 +1,4 @@
+```bash
 .
 ├── 01OCT25
 │   ├── NOTAS.md
@@ -84,3 +85,4 @@
     └── FUNCIONES_INCLUIDAS.md
 
 27 directories, 57 files
+```
