@@ -1,4 +1,3 @@
-```bash
 .
 ├── 01OCT25
 │   ├── NOTAS.md
@@ -46,6 +45,8 @@
 ├── 19SEP25
 │   ├── codigo.lsp
 │   └── NOTAS.md
+├── 20OCT25
+│   └── suma.pl
 ├── 22SEP25
 │   ├── arbolfamiliar.lsp
 │   └── codigo.lsp
@@ -56,10 +57,30 @@
 ├── EJERCICIOS_LISP_PREEXAMEN
 │   ├── 1_PROBLEMAS_CON_CAR_Y_CDR.md
 │   └── 2_EJERCICIOS_DE_LISP_(USO_RESTRINGIDO_DE_FUNCIONES).md
+├── PRACTICA_LISTAS_PROLOG
+│   ├── 10.md
+│   ├── 10.pl
+│   ├── 1.md
+│   ├── 1.pl
+│   ├── 2.md
+│   ├── 2.pl
+│   ├── 3.md
+│   ├── 3.pl
+│   ├── 4.md
+│   ├── 4.pl
+│   ├── 5.md
+│   ├── 5.pl
+│   ├── 6.md
+│   ├── 6.pl
+│   ├── 7.md
+│   ├── 7.pl
+│   ├── 8.md
+│   ├── 8.pl
+│   ├── 9.md
+│   └── 9.pl
 ├── README.md
 └── TEORICO
     ├── EJERCICIOS_NOTACION_POLACA.pdf
     └── FUNCIONES_INCLUIDAS.md
 
-25 directories, 36 files
-```
+27 directories, 57 files
