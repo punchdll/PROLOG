@@ -1,4 +1,8 @@
+# PROGRAMACIÓN LÓGICA Y FUNCIONAL AGOSTO-DICIEMBRE 2025
+> Sat Oct 25 10:25:21 PM CST 2025 
+
 ```bash
+
 .
 ├── 01OCT25
 │   ├── NOTAS.md
@@ -80,9 +84,15 @@
 │   ├── 9.md
 │   └── 9.pl
 ├── README.md
-└── TEORICO
-    ├── EJERCICIOS_NOTACION_POLACA.pdf
-    └── FUNCIONES_INCLUIDAS.md
+├── SISTEMA_EXPERTO_MEDICO
+│   ├── medico.md
+│   └── medico.pl
+├── TEORICO
+│   ├── EJERCICIOS_NOTACION_POLACA.pdf
+│   └── FUNCIONES_INCLUIDAS.md
+└── treegen.sh
 
-27 directories, 57 files
+28 directories, 60 files
+
 ```
+
