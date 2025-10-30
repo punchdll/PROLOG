@@ -41,3 +41,35 @@ template([hey, ',', mi, nombre, es, s(_), '.'], ['Que', 'tal', 0, '!', 'Un', 'pl
 template([me, llamo, s(_)], ['Hola', 0, '.', 'Bonito', 'nombre', '.'], [1]).
 template([mi, nombre, es, s(_)], ['Hola', 0, '.', 'Encantada', 'de', 'conocerte', '.'], [3]).
 template([soy, s(_), '.'], ['Hola', 0, '.', 'En', 'que', 'puedo', 'ayudarte', '?'], [1]).
+
+%Likes
+likes(apples).
+likes(ponies).
+likes(zombies).
+likes(manzanas).
+likes(computadoras).
+likes(carros).
+likes(pizza).
+likes(tacos).
+likes(chocolate).
+likes(musica).
+likes(libros).
+likes(peliculas).
+likes(gatos).
+likes(perros).
+likes(videojuegos).
+likes(ia).
+likes(robots).
+likes(prolog).
+likes(logica).
+likes(ciencia).
+likes(estrellas).
+likes(lluvia).
+likes(memes).
+likes(sushi).
+likes(helado).
+likes(delfines).
+likes(arte).
+likes(viajes).
+likes(historia).
+likes(silencio).
