@@ -1,3 +1,11 @@
+%%Bienvenida de eliza
+%%Funciona al poner eliza.
+eliza:-	writeln('Hola, mi nombre es  Eliza tu  chatbot, por favor ingresa tu consulta, usar solo minúsculas sin . al final:'),
+	            readln(Input),
+	            eliza(Input),!.
+
+
+%%Casos base de cierre
 %Despedida
 eliza(Input):- Input == ['adios'], writeln('Adios. espero poder verte ayudado.'), !.
 eliza(Input):- Input == ['adios', '.'], writeln('Adios. espero poder verte ayudado.'), !.
@@ -20,16 +28,26 @@ eliza(Input):- Input == ['tengo, que, irme', '.'], writeln('Entendido. Vuelve pr
 eliza(Input):- Input == ['eso, es, todo'], writeln('Perfecto. Que estes bien. Adios.'), !.
 eliza(Input):- Input == ['eso, es, todo', '.'], writeln('Perfecto. Que estes bien. Adios.'), !.
 
+
+eliza(Input) :-
+	template(Stim, Resp, IndStim),
+	match(Stim, Input),
+	replace0(IndStim, Input, 0, Resp, R),
+	writeln(R),
+	readln(Input1),
+	eliza(Input1), !.
+
+
 %Saludo
-template([hola], ['Hola!', 'En', que, puedo, ayudarte', '?'], []).
+template([hola], ['Hola!', 'En', 'que, puedo, ayudarte', '?'], []).
 template([hey], ['Hola.', 'Dime', 'tu', 'consulta', '.'], []).
 template([que, tal], ['Que', 'tal!', 'Cual', 'es', 'tu', 'pregunta', '?'], []).
 template([que, onda], ['Hola.', 'Estoy', 'lista', 'para', 'tu', 'consulta', '.'], []).
-template([saludos], ['Saludos.', 'En', que, te', 'ayudo', '?'], []).
+template([saludos], ['Saludos.', 'En', 'que, te', 'ayudo', '?'], []).
 template([buena, tarde], ['Buenas', 'tardes.', 'Cual', 'es', 'tu', 'consulta', '?'], []).
-template([buenas, noches], ['Buenas', 'noches.', 'En', que, te', 'puedo', 'ayudar', '?'], []).
+template([buenas, noches], ['Buenas', 'noches.', 'En', 'que, te', 'puedo', 'ayudar', '?'], []).
 template([que, hay], ['Todo', 'bien.', 'Que', 'necesitas', '?'], []).
-template([hola, '.'], ['Hola!', 'En', que, puedo, ayudarte', '?'], []).
+template([hola, '.'], ['Hola!', 'En', 'que, puedo, ayudarte', '?'], []).
 template([hey, '.'], ['Hola.', 'Dime', 'tu', 'consulta', '.'], []).
 template([como, estas, '?'], ['Yo', estoy, 'bien', ',', gracias, '.', 'Cual', 'es', 'tu', 'consulta', '?'], []).
 template([como, estas, tu, '?'], ['Yo', estoy, 'bien', ',', gracias, '.', 'Cual', 'es', 'tu', 'consulta', '?'], []).
