@@ -1,5 +1,5 @@
 # PROGRAMACIÓN LÓGICA Y FUNCIONAL AGOSTO-DICIEMBRE 2025
-> Mon Nov 10 06:42:20 PM CST 2025 
+> Tue 18 Nov 2025 11:55:02 PM CST 
 
 ```bash
 
@@ -39,8 +39,13 @@
 ├── 12SEP25
 │   ├── EJERCICIOS.lsp
 │   └── NOTAS.md
+├── 13NOV25
+│   └── builtin.md
 ├── 13OCT25
 │   └── biblioteca.pl
+├── 14NOV25
+│   ├── maplist.md
+│   └── maplist.pl
 ├── 15OCT25
 │   └── fibo.pl
 ├── 17SEP25
@@ -63,8 +68,9 @@
 │   ├── 1_PROBLEMAS_CON_CAR_Y_CDR.md
 │   └── 2_EJERCICIOS_DE_LISP_(USO_RESTRINGIDO_DE_FUNCIONES).md
 ├── ELIZA
-│   ├── eliza.pl
-│   └── tes.pl
+│   └── eliza.pl
+├── ENFERMEDADES
+│   └── INFORMACION_ENFERMEDADES.md
 ├── PRACTICA_LISTAS_PROLOG
 │   ├── 10.md
 │   ├── 10.pl
@@ -96,7 +102,7 @@
 │   └── FUNCIONES_INCLUIDAS.md
 └── treegen.sh
 
-29 directories, 63 files
+32 directories, 66 files
 
 ```
 
