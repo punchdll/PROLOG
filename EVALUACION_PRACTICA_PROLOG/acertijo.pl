@@ -28,9 +28,20 @@ horario('12 pm').
 horario('14 pm').
 
 %%  Hechos especificos
-horario('Genética', Horario):- Horario = '6 am'.  
+horario(Investigador):-     equipo(Investigador, 'PCR'), 
+                            horario(Investigador, Horario_A), 
+                            equipo(Investigador_PCR, 'PCR'),
+                            horario(Investigador_PCR, Horario_B),
+                            Horario_B > Horario_A.
+horario('Genética', '6 am').
+horario(Investigador, Horario):-    especialidad(Investigador, 'Neurociencia'), 
+                                    bebida(Investigador_B, 'Jugo'), horario(Investigador_B, X),
+                                    Horario > X.
+                                    
 horario(Investigador, Horario):- pais('Perú', Investigador), Horario = '10 am'.
 
+
+% horario(Investigador, Horario):- bebida(Investigador, 'Café')
 
 %%  Hechos para bebidas
 bebida('Café').
@@ -43,8 +54,9 @@ bebida('Agua').
 bebida(Investigador, 'Mate'):- pais(Investigador, 'Argentina').
 bebida('Elisa', 'Café'):- !, fail.
 bebida('Elisa', 'Té'):- !, fail.
-
-
+bebida(Investigador, 'Agua'):- \+ pais(Investigador, 'Perú').
+bebida(Investigador, 'Agua'):- \+ equipo(Investigador, 'PCR').
+bebida(Investigador, 'Agua'):- \+ equipo(Investigador, 'Espectrómetro').
 
 %%  Hechos para equipos
 equipo('Microscopio').
@@ -54,11 +66,15 @@ equipo('Espectrómetro').
 equipo('Incubadora').
 
 %%  Hechos especificos
-equipo(Investigador, 'PCR'):- especialidad(Investigador, 'Inmunología').
-equipo(Investigador, 'Microscopio'):- \+ pais(Investigador, 'México').
+equipo('Carlos', 'Espectrómetro').
 
-% %%-->Incompleta
-% equipo(Investigador, 'Incubadora'):- horario().
+equipo(Investigador, 'PCR'):- especialidad(Investigador, 'Inmunología').
+equipo(Investigador, 'PCR'):- \+ bebida(Investigador, 'Agua').
+equipo(Investigador, 'Microscopio'):- \+ pais(Investigador, 'México').
+equipo(Investigador, 'Incubadora'):- \+ pais(Investigador, 'México').
+equipo(Investigador, 'Espectrómetro'):- \+ bebida(Investigador, 'Agua').
+equipo(Investigador, 'Centrifuga'):- bebida(Investigador, 'Té').
+equipo(Investigador, 'Incubadora'):- horario(Investigador, '14 pm').
 
 %% ?
 equipo('Carlos', 'Espectrómetro').
@@ -72,10 +88,4 @@ pais('Perú').
 
 pais(Investigador, 'Chile'):- especialidad(Investigador, 'Bioquímica').
 pais('Bruno', 'México'):- !, fail.
-
-
-
-
-
-
-
+pais(Investigador, 'Agua'):- \+ pais(Investigador, 'Perú').
