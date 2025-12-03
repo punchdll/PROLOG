@@ -5,6 +5,8 @@ enfermedad(hepatitis).
 enfermedad(tuberculosis).
 enfermedad(anemia).
 enfermedad(polipos_intestinales).
+enfermedad(chikungunya).
+enfermedad(sifilis_congenita).
 
 enfermode(manuel, gripe).
 tienesintoma(alicia, cansancio).
@@ -71,7 +73,7 @@ medicinade(pastillas, tuberculosis).
 medicinade(vacuna, malaria). 
 medicinade(vacuna, rubeola). 
 medicinade(vitaminas, anemia). 
-medicinade(pastillas, hepatitis).
+medicinade(pastillas, hepatitis).>
 medicinade(polipectomia, polipos_intestinales).
 medicinade(paracetamol, chikungunya).
 medicinade(acetaminofen, chikungunya).
@@ -92,8 +94,6 @@ especialistade(medicinageneral, chikungunya).
 especialistade(infectologo, chikungunya).
 especialistade(neonatologo, sifilis_congenita).
 especialistade(pediatrainfectologo, sifilis_congenita).
-
-
 
 atiende_especialista(E, S):- sintomade(S, Z), especialistade(E, Z).
 
