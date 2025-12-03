@@ -65,6 +65,12 @@ buscar([X | Xs], E, P):- enfermedad(E) , buscar(X, E, S1) , buscar(Xs, E,S2) , P
 
 cantSint(E , C):- findall(X , sintomade(X, E) , L) , length(L , R), C is R.
 
+# Para el exclusivo
+diagnostico(ListaSintomas, Enfermedad, 100) :-
+    member(Sintoma, ListaSintomas),
+    es_sintoma_exclusivo(Sintoma, Enfermedad).
+
+# Para el normal
 diagnostico([X|Xs] , E , K):- buscar([X | Xs] , E , P) , cantSint(E, T) , K is P * 100 / T.
 
 medicinade(contrex, gripe).
@@ -99,3 +105,8 @@ atiende_especialista(E, S):- sintomade(S, Z), especialistade(E, Z).
 
 mereceta(Es, M, E) :- medicinade(M, E), especialistade(Es, E).
 
+# Para sintoma exclusivo
+es_sintoma_exclusivo(S, E) :-
+    sintomade(S, E),
+    findall(OtraEnfermedad, (sintomade(S, OtraEnfermedad), OtraEnfermedad \= E), ListaOtras),
+    length(ListaOtras, 0).
