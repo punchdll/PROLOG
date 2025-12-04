@@ -1,112 +1,135 @@
-enfermedad(gripe).
-enfermedad(rubeola).
-enfermedad(malaria).
-enfermedad(hepatitis).
-enfermedad(tuberculosis).
-enfermedad(anemia).
-enfermedad(polipos_intestinales).
-enfermedad(chikungunya).
-enfermedad(sifilis_congenita).
+% ==========================================================
+% HECHOS: Enfermedades y Síntomas
+% ==========================================================
 
-enfermode(manuel, gripe).
-tienesintoma(alicia, cansancio).
+tiene_sintoma(gripe, fiebre).
+tiene_sintoma(gripe, dolor_cabeza).
+tiene_sintoma(gripe, congestion).
 
-sintomade(tos, gripe).
-sintomade(cansancio, gripe). 
-sintomade(fiebre, gripe).
-sintomade(dolorcabeza, gripe). 
-sintomade(nausea, hepatitis). 
-sintomade(diarrea, hepatitis). 
-sintomade(ictericia, hepatitis). 
-sintomade(cansancio, anemia). 
-sintomade(apatia, anemia).
-sintomade(nausea, anemia).
-sintomade(tos, tuberculosis).
-sintomade(cansancio, tuberculosis). 
-sintomade(fiebre, tuberculosis). 
-sintomade(escalofrios, tuberculosis). 
-sintomade(escalofrios, malaria). 
-sintomade(fiebre, malaria). 
-sintomade(diarrea, malaria). 
-sintomade(ictericia, malaria). 
-sintomade(fiebre, rubeola). 
-sintomade(jaqueca, rubeola). 
-sintomade(secrecion, rubeola).
-sintomade(sangradorectal, polipos_intestinales).
-sintomade(diarrea, polipos_intestinales).
-sintomade(estrenimientoprolongado, polipos_intestinales).
-sintomade(dolorabdominal, polipos_intestinales).
-sintomade(fatiga, polipos_intestinales).
-sintomade(anemia, polipos_intestinales).
-sintomade(fiebrealta, chikungunya).
-sintomade(dolorarticular, chikungunya).
-sintomade(dolormuscular, chikungunya).
-sintomade(dolorcabeza, chikungunya).
-sintomade(erupciones, chikungunya).
-sintomade(fatigaextrema, chikungunya).
-sintomade(nausea, chikungunya).
-sintomade(conjuntivitis, chikungunya).
-sintomade(lesionescutaneas, sifilis_congenita).
-sintomade(secrecionnasal, sifilis_congenita).
-sintomade(fiebre, sifilis_congenita).
-sintomade(anemia, sifilis_congenita).
-sintomade(ictericia, sifilis_congenita).
-sintomade(retrasodesarrollo, sifilis_congenita).
-sintomade(malformacionesoseas, sifilis_congenita).
+tiene_sintoma(alergia, estornudos).
+tiene_sintoma(alergia, picazon_ojos).
+tiene_sintoma(alergia, congestion).
+
+tiene_sintoma(migrana, dolor_cabeza_severo).
+tiene_sintoma(migrana, sensibilidad_luz).
+tiene_sintoma(migrana, nauseas).
+
+tiene_sintoma(resfriado, estornudos).
+tiene_sintoma(resfriado, congestion).
+tiene_sintoma(resfriado, dolor_garganta).
+
+tiene_sintoma(polipos_intestinales, sangrado_rectal).
+tiene_sintoma(polipos_intestinales, diarrea).
+tiene_sintoma(polipos_intestinales, estrenimiento_prolongado).
+tiene_sintoma(polipos_intestinales, dolor_abdominal).
+tiene_sintoma(polipos_intestinales, fatiga).
+tiene_sintoma(polipos_intestinales, anemia).
+
+tiene_sintoma(chikungunya, fiebre_alta).
+tiene_sintoma(chikungunya, dolor_articular_intenso).
+tiene_sintoma(chikungunya, dolor_muscular).
+tiene_sintoma(chikungunya, dolor_cabeza).
+tiene_sintoma(chikungunya, erupciones_piel).
+tiene_sintoma(chikungunya, fatiga_extrema).
+tiene_sintoma(chikungunya, nauseas).
+tiene_sintoma(chikungunya, conjuntivitis).
+
+tiene_sintoma(sifilis_congenita, lesiones_cutaneas).
+tiene_sintoma(sifilis_congenita, secrecion_nasal).
+tiene_sintoma(sifilis_congenita, fiebre).
+tiene_sintoma(sifilis_congenita, anemia).
+tiene_sintoma(sifilis_congenita, ictericia).
+tiene_sintoma(sifilis_congenita, retraso_desarrollo).
+tiene_sintoma(sifilis_congenita, malformaciones_oseas).
 
 
-buscar([], _ , 0). 
+% ==========================================================
+% HECHOS: Tratamientos
+% ==========================================================
 
-buscar(X, E, 1):- atomic(X), sintomade(X, E).
+tratamiento(gripe, 'Reposo, hidratacion, paracetamol y aislamiento.').
+tratamiento(alergia, 'Antihistaminicos y evitar el alergeno conocido.').
+tratamiento(migrana, 'Medicacion especifica, ambiente oscuro y tranquilo.').
+tratamiento(resfriado, 'Liquidos calientes, descongestionantes y vitamina C.').
 
-buscar(X, E, 0):- atomic(X), \+ sintomade(X, E).
+tratamiento(polipos_intestinales, 'Polipectomia, dieta rica en fibra y evitar grasas.').
+tratamiento(chikungunya, 'Paracetamol, hidratacion constante y reposo.').
+tratamiento(sifilis_congenita, 'Penicilina G, control prenatal y seguimiento medico.').
 
-buscar([X | Xs], E, P):- enfermedad(E) , buscar(X, E, S1) , buscar(Xs, E,S2) , P is S1 + S2.
+% ==========================================================
+% PREDICADO DINÁMICO
+% ==========================================================
 
-cantSint(E , C):- findall(X , sintomade(X, E) , L) , length(L , R), C is R.
+:- dynamic sintoma/2.
 
-# Para el exclusivo
-diagnostico(ListaSintomas, Enfermedad, 100) :-
-    member(Sintoma, ListaSintomas),
-    es_sintoma_exclusivo(Sintoma, Enfermedad).
+reset_paciente(P) :- retractall(sintoma(P,_)).
 
-# Para el normal
-diagnostico([X|Xs] , E , K):- buscar([X | Xs] , E , P) , cantSint(E, T) , K is P * 100 / T.
+% Sistema de interacción
+pregunta(Paciente, Sintoma) :-
+    sintoma(Paciente, Sintoma), !.
 
-medicinade(contrex, gripe).
-medicinade(jarabe, gripe).
-medicinade(pastillas, tuberculosis). 
-medicinade(vacuna, malaria). 
-medicinade(vacuna, rubeola). 
-medicinade(vitaminas, anemia). 
-medicinade(pastillas, hepatitis).>
-medicinade(polipectomia, polipos_intestinales).
-medicinade(paracetamol, chikungunya).
-medicinade(acetaminofen, chikungunya).
-medicinade(penicilina, sifilis_congenita).
-medicinade(penicilina, sifilis_congenita).
+pregunta(Paciente, Sintoma) :-
+    write('¿El paciente '), write(Paciente),
+    write(' tiene '), write(Sintoma), write('? (si/no): '),
+    read(Resp),
+    ( Resp = si ->
+        assertz(sintoma(Paciente, Sintoma))
+    ;
+        fail
+    ).
 
-recetade(M, S):- sintomade(S, Z), medicinade(M, Z).
+% ==========================================================
+% DIAGNÓSTICO BÁSICO
+% ==========================================================
 
-especialistade(otorrino, gripe).
-especialistade(nutricionista, anemia).
-especialistade(endocrinologia, hepatitis).
-especialistade(medicinageneral, rubeola). 
-especialistade(nutricionista, tuberculosis). 
-especialistade(medicinageneral, malaria).
-especialistade(gastroenterologo, polipos_intestinales).
-especialistade(cirujanodigestivo, polipos_intestinales).
-especialistade(medicinageneral, chikungunya).
-especialistade(infectologo, chikungunya).
-especialistade(neonatologo, sifilis_congenita).
-especialistade(pediatrainfectologo, sifilis_congenita).
+diagnostico_basico(Paciente, Enfermedad) :-
+    tiene_sintoma(Enfermedad, S),
+    pregunta(Paciente, S).
 
-atiende_especialista(E, S):- sintomade(S, Z), especialistade(E, Z).
+% ==========================================================
+% DIAGNÓSTICO COMPLETO
+% ==========================================================
 
-mereceta(Es, M, E) :- medicinade(M, E), especialistade(Es, E).
+diagnostico_completo(Paciente, Enfermedad) :-
+    findall(S, tiene_sintoma(Enfermedad, S), Lista),
+    todos_confirmados(Paciente, Lista).
 
-# Para sintoma exclusivo
-es_sintoma_exclusivo(S, E) :-
-    sintomade(S, E),
-    findall(OtraEnfermedad, (sintomade(S, OtraEnfermedad), OtraEnfermedad \= E), ListaOtras),
-    length(ListaOtras, 0).
+todos_confirmados(_, []).
+todos_confirmados(Paciente, [S|R]) :-
+    pregunta(Paciente, S),
+    todos_confirmados(Paciente, R).
+
+% ==========================================================
+% DISTINCIÓN FUERTE Y TRATAMIENTOS
+% ==========================================================
+
+distincion_fuerte(P, gripe) :-
+    diagnostico_basico(P, gripe),
+    pregunta(P, fiebre),
+    \+ pregunta(P, estornudos).
+
+distincion_fuerte(P, resfriado) :-
+    diagnostico_basico(P, resfriado),
+    pregunta(P, estornudos),
+    \+ pregunta(P, fiebre).
+
+obtener_tratamiento(P, Trat) :-
+    (distincion_fuerte(P, E) ; diagnostico_basico(P, E)),
+    tratamiento(E, Trat).
+
+% ==========================================================
+% SEVERIDAD
+% ==========================================================
+
+contar_sintomas_confirmados(P, Enfermedad, C) :-
+    findall(S, (tiene_sintoma(Enfermedad,S), sintoma(P,S)), L),
+    length(L, C).
+
+severidad(P, E, 'Severa') :-
+    contar_sintomas_confirmados(P, E, C), C >= 3, !.
+
+severidad(P, E, 'Moderada') :-
+    contar_sintomas_confirmados(P, E, C), C = 2, !.
+
+severidad(P, E, 'Leve') :-
+    contar_sintomas_confirmados(P, E, C), C = 1, !.
