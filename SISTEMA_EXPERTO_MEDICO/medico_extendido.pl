@@ -133,3 +133,12 @@ severidad(P, E, 'Moderada') :-
 
 severidad(P, E, 'Leve') :-
     contar_sintomas_confirmados(P, E, C), C = 1, !.
+
+% ==========================================================
+% DIAGNOSTICO EXCLUSIVO
+% ==========================================================
+diagnostico_exclusivo(Paciente, Enfermedad) :-
+    tiene_sintoma(Enfermedad, Sintoma),
+    \+ (tiene_sintoma(OtraEnfermedad, Sintoma), OtraEnfermedad \= Enfermedad),
+    pregunta(Paciente, Sintoma),
+    !.
