@@ -142,3 +142,12 @@ diagnostico_exclusivo(Paciente, Enfermedad) :-
     \+ (tiene_sintoma(OtraEnfermedad, Sintoma), OtraEnfermedad \= Enfermedad),
     pregunta(Paciente, Sintoma),
     !.
+
+% ==========================================================
+% DIAGNOSTICO POR PROBABILIDAD
+% ==========================================================
+probabilidad(Paciente, Enfermedad, Porcentaje):-
+    findall(S, tiene_sintoma(Enfermedad, S), S_L),
+    length(S_L, T),
+    contar_sintomas_confirmados(Paciente, Enfermedad, C),
+    Porcentaje is (C / T) * 100.
