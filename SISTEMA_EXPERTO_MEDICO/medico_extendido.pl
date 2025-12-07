@@ -151,3 +151,12 @@ probabilidad(Paciente, Enfermedad, Porcentaje):-
     length(S_L, T),
     contar_sintomas_confirmados(Paciente, Enfermedad, C),
     Porcentaje is (C / T) * 100.
+% ==========================================================
+% DIAGNOSTICO POR PREVENTIVO
+% ==========================================================
+diagnostico_preventivo(Paciente, Enfermedad):-
+    findall(S, tiene_sintoma(Enfermedad, S), S_L),
+    length(S_L, T),
+    contar_sintomas_confirmados(Paciente, Enfermedad, C),
+    C > 0,
+    C < T.    
