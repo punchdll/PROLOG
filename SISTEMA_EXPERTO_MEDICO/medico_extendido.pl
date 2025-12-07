@@ -159,4 +159,12 @@ diagnostico_preventivo(Paciente, Enfermedad):-
     length(S_L, T),
     contar_sintomas_confirmados(Paciente, Enfermedad, C),
     C > 0,
-    C < T.    
+    C < T.
+
+==========================================================
+ENFERMEDADES SIMILARES
+==========================================================
+enfermedades_similares(E1, E2):-
+    findall(S, (tiene_sintoma(E1, S), tiene_sintoma(E2,S)), Sintomas),
+    length(Sintomas, T),
+    T >= 2.
