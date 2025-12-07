@@ -63,6 +63,14 @@ contradictorio(fiebre, picazon_ojos).
 contradictorio(nauseas, estornudos).
 
 % ==========================================================
+% HECHOS: Gravedad de enfermedades
+% ==========================================================
+gravedad(gripe, alto).
+gravedad(alergia, bajo).
+gravedad(migrana, bajo).
+gravedad(resfriado, bajo).
+
+% ==========================================================
 % PREDICADO DINÁMICO
 % ==========================================================
 
@@ -193,3 +201,10 @@ arbol_diagnostico(Paciente, Enfermedad):-
     setof(E, S^tiene_sintoma(E, S), Enfermedades),
     member(Enfermedad, Enfermedades),
     diagnostico_completo(Paciente, Enfermedad), !.
+
+%==========================================================
+%ENFERMEDADES GRAVES CON RIESGO
+%==========================================================
+riesgo(Paciente, Enfermedad, Nivel):-
+    diagnostico_completo(Paciente, Enfermedad),
+    gravedad(Enfermedad, Nivel), !.
