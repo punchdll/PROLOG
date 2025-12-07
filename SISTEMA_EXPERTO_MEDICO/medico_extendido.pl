@@ -185,3 +185,11 @@ sintomas_contradictorios(Paciente):-
     S1 @< S2,
     (contradictorio(S1, S2) ; contradictorio(S2, S1)),
     !.
+    
+%==========================================================
+%ÁRBOL DE DECISIÓN MEDICO
+%==========================================================
+arbol_diagnostico(Paciente, Enfermedad):-
+    setof(E, S^tiene_sintoma(E, S), Enfermedades),
+    member(Enfermedad, Enfermedades),
+    diagnostico_completo(Paciente, Enfermedad), !.
