@@ -208,3 +208,12 @@ arbol_diagnostico(Paciente, Enfermedad):-
 riesgo(Paciente, Enfermedad, Nivel):-
     diagnostico_completo(Paciente, Enfermedad),
     gravedad(Enfermedad, Nivel), !.
+
+%==========================================================
+%LISTA DE TRATAMIENTOS PARA LAS ENFERMEDADES
+%==========================================================
+tratamiento_combinado(Paciente, Lista):-
+    setof(Tratamiento, 
+        Enfermedad^
+            (diagnostico_basico(Paciente, Enfermedad), 
+        tratamiento(Enfermedad, Tratamiento)), Lista).
