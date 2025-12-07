@@ -57,6 +57,12 @@ tratamiento(chikungunya, 'Paracetamol, hidratacion constante y reposo.').
 tratamiento(sifilis_congenita, 'Penicilina G, control prenatal y seguimiento medico.').
 
 % ==========================================================
+% HECHOS: Sintomas contradictorios
+% ==========================================================
+contradictorio(fiebre, picazon_ojos).
+contradictorio(nauseas, estornudos).
+
+% ==========================================================
 % PREDICADO DINÁMICO
 % ==========================================================
 
@@ -161,10 +167,21 @@ diagnostico_preventivo(Paciente, Enfermedad):-
     C > 0,
     C < T.
 
-==========================================================
-ENFERMEDADES SIMILARES
-==========================================================
+%==========================================================
+%ENFERMEDADES SIMILARES
+%==========================================================
 enfermedades_similares(E1, E2):-
     findall(S, (tiene_sintoma(E1, S), tiene_sintoma(E2,S)), Sintomas),
     length(Sintomas, T),
     T >= 2.
+
+%==========================================================
+%SINTOMAS CONTRADICTORIOS
+%==========================================================
+sintomas_contradictorios(Paciente):-
+    findall(S, sintoma(Paciente, S), ListaSintomas),
+    member(S1, ListaSintomas),
+    member(S2, ListaSintomas),
+    S1 @< S2,
+    (contradictorio(S1, S2) ; contradictorio(S2, S1)),
+    !.
