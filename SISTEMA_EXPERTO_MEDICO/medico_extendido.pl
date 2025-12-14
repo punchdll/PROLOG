@@ -264,3 +264,26 @@ recomendacion(Paciente, Enfermedad, Texto):-
 diagnosticar_y_tratar(Paciente, Diagnostico, Tratamiento):-
     arbol_diagnostico(Paciente, Diagnostico),
     tratamiento(Diagnostico, Tratamiento).
+
+%==========================================================
+%REPORTE COMPLETO
+%==========================================================
+reporte(Paciente) :-
+    format('Paciente: ~w~n', [Paciente]),
+    findall(S, sintoma(Paciente, S), Sintomas),
+    format('Sintomas: ~w~n', [Sintomas]),
+    writeln('Probabilidades:'),
+    setof(E, S^tiene_sintoma(E,S), Enfs),
+    forall(member(E, Enfs), (
+        probabilidad(Paciente, E, Prob),
+        Prob > 0,
+        format('  - ~w: ~2f%~n', [E, Prob])
+    )),
+    (arbol_diagnostico(Paciente, D) ->
+        format('Diagnostico: ~w~n', [D]),
+        (severidad(Paciente, D, S) -> format('Severidad: ~w~n', [S]); true),
+        (tratamiento(D, T) -> format('Tratamiento: ~w~n', [T]); true),
+        (recomendacion(Paciente, D, R) -> format('Recomendacion: ~w~n', [R]); true)
+    ;
+        false
+    ).
