@@ -254,6 +254,13 @@ tratamiento_combinado(Paciente, Lista):-
 %==========================================================
 %RECOMENDACION SEGUN SEVERIDAD
 %==========================================================
-recomendacion(Paciente, Enfermedad, Texto).
-    severidad(Paciente, Enfermedad, severidad),
-    recomendacion(Enfermedad, severidad, Texto).
+recomendacion(Paciente, Enfermedad, Texto):-
+    severidad(Paciente, Enfermedad, Severidad),
+    recomendacion(Enfermedad, Severidad, Texto).
+
+%==========================================================
+%DIAGNOSTICAR Y TRATAR EN UN SOL PASO
+%==========================================================
+diagnosticar_y_tratar(Paciente, Diagnostico, Tratamiento):-
+    arbol_diagnostico(Paciente, Diagnostico),
+    tratamiento(Diagnostico, Tratamiento).
