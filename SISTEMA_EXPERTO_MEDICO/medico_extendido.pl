@@ -57,6 +57,39 @@ tratamiento(chikungunya, 'Paracetamol, hidratacion constante y reposo.').
 tratamiento(sifilis_congenita, 'Penicilina G, control prenatal y seguimiento medico.').
 
 % ==========================================================
+% Recomendaciones segun severidad
+% ==========================================================
+
+recomendacion(gripe, 'Leve', 'Descanso y liquidos abundantes.').
+recomendacion(gripe, 'Moderada', 'Reposo en cama y paracetamol.').
+recomendacion(gripe, 'Severa', 'Acudir al medico por fiebre alta persistente.').
+
+recomendacion(alergia, 'Leve', 'Evitar el alergeno y lavar zona afectada.').
+recomendacion(alergia, 'Moderada', 'Uso de antihistaminicos de venta libre.').
+recomendacion(alergia, 'Severa', 'Atencion medica urgente por dificultad respiratoria.').
+
+recomendacion(migrana, 'Leve', 'Descanso en habitacion oscura y silenciosa.').
+recomendacion(migrana, 'Moderada', 'Analgesicos y compresas frias.').
+recomendacion(migrana, 'Severa', 'Consultar especialista para tratamiento profilactico.').
+
+recomendacion(resfriado, 'Leve', 'Mantenerse hidratado y descansar.').
+recomendacion(resfriado, 'Moderada', 'Vahos de eucalipto y descongestionantes.').
+recomendacion(resfriado, 'Severa', 'Vigilar complicaciones respiratorias.').
+
+recomendacion(polipos_intestinales, 'Leve', 'Aumentar ingesta de fibra y agua.').
+recomendacion(polipos_intestinales, 'Moderada', 'Control medico periodico y dieta estricta.').
+recomendacion(polipos_intestinales, 'Severa', 'Evaluacion quirurgica inmediata.').
+
+recomendacion(chikungunya, 'Leve', 'Reposo y control de temperatura.').
+recomendacion(chikungunya, 'Moderada', 'Analgesicos para dolor articular y reposo.').
+recomendacion(chikungunya, 'Severa', 'Hospitalizacion si hay deshidratacion severa.').
+
+recomendacion(sifilis_congenita, 'Leve', 'Seguimiento medico y antibioticos.').
+recomendacion(sifilis_congenita, 'Moderada', 'Tratamiento con penicilina bajo supervision.').
+recomendacion(sifilis_congenita, 'Severa', 'Manejo hospitalario de complicaciones.').
+
+
+% ==========================================================
 % HECHOS: Sintomas contradictorios
 % ==========================================================
 contradictorio(fiebre, picazon_ojos).
@@ -217,3 +250,10 @@ tratamiento_combinado(Paciente, Lista):-
         Enfermedad^
             (diagnostico_basico(Paciente, Enfermedad), 
         tratamiento(Enfermedad, Tratamiento)), Lista).
+
+%==========================================================
+%RECOMENDACION SEGUN SEVERIDAD
+%==========================================================
+recomendacion(Paciente, Enfermedad, Texto).
+    severidad(Paciente, Enfermedad, severidad),
+    recomendacion(Enfermedad, severidad, Texto).
